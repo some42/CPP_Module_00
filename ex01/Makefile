@@ -1,29 +1,65 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/16 11:45:07 by agaliste          #+#    #+#              #
+#    Updated: 2022/03/16 11:49:54 by agaliste         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# BINARY NAME
 NAME = phonebook
 
-SRCS =	phonebook.cpp
+# SOURCE FILES (.c)
+SRCS = phonebook.cpp
 
-OBJS = ${SRCS:.cpp=.o}
+# HEADER FILES (.h)
+HEADER = headers
 
-CC		= clang++
+# COMPILER
+CC = clang++
 
-CFLAGS = -Wall -Wextra -Werror
+# COMPILATION FLAGS
+FLAGS = -Wall -Wextra -Werror
+SANITIZE_FLAGS = $(FLAGS) -fsanitize=address
+DEBUG_FLAGS = $(SANITIZE_FLAGS) -g3
 
-INCLUDES = -I.
+# COMPILED OBJECTS
+OBJS = $(SRCS:.c=.o)
 
-FCOUNTER=1
+# INCLUDES
+INCLUDES = -I$(HEADER)
 
-.cpp.o:
-		@echo "\033[1;36mCompiled $(FCOUNTER) of 1 files\033[0m"
-		@${CC} ${CFLAGS} ${SRCS} ${INCLUDES} -o ${NAME}
-${NAME}::${OBJS}
-		$(eval FCOUNTER=$(shell echo $$(($(FCOUNTER)+1))))
-		@echo "\033[1;32mDONE!\033[0m"
+# MAKEFILE RULES
+.PHONY: all sanitize resanitize debug rebug clean fclean re
 
-clean:  
-		@echo "\033[1;32mJunk removed!\033[0m"
-		@rm -rf $(OBJS)
+all: $(NAME)
+
+%.o: %.cpp
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+
+$(NAME): $(OBJS) 
+	$(CC) $(FLAGS) $(SRCS) $(INCLUDES) -o $(NAME)
+
+sanitize: $(NAME)
+	$(CC) $(SANITIZE_FLAGS) $(SRCS) $(INCLUDES) -o $(NAME)
+
+resanitize: fclean sanitize
+
+debug: $(NAME)
+	$(CC) $(DEBUG_FLAGS) $(SRCS) $(INCLUDES) -o $(NAME)
+
+rebug: fclean debug
+
+clean:
+	@rm -rf $(OBJS)
+	@echo "cleaning .o files"
 
 fclean: clean
-		@rm -rf $(NAME)
+	@rm -rf $(NAME)
+	@echo "Removed binary"
 
-all: ${OBJS}
+re: fclean all
