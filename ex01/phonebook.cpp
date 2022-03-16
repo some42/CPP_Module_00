@@ -6,7 +6,7 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 11:50:20 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/16 17:45:04 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:48:14 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	User 		phonebook[MAX_USERS];
-	std::string command = " ";
+	std::string command;
 	uint64_t 	i;
 
 	while (command != "EXIT")
