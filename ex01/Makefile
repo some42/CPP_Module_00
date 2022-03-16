@@ -6,7 +6,7 @@
 #    By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 11:45:07 by agaliste          #+#    #+#              #
-#    Updated: 2022/03/16 11:49:54 by agaliste         ###   ########.fr        #
+#    Updated: 2022/03/16 16:03:13 by agaliste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SANITIZE_FLAGS = $(FLAGS) -fsanitize=address
 DEBUG_FLAGS = $(SANITIZE_FLAGS) -g3
 
 # COMPILED OBJECTS
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 # INCLUDES
 INCLUDES = -I$(HEADER)
