@@ -6,7 +6,7 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 11:17:09 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/16 17:02:40 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:41:24 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,39 @@
 #include <iostream>
 #include <sstream>
 #include <regex>
+#include <cstdlib>
 
 class User { 
 	public: 
-		void setFName(){
+		void create(){
+			_setFName();
+			_setLName();
+			_setNickname();
+			_setDarksecret();
+			_setPhone();
+		}
+		int printUser(){
+			std::cout << _Fname << " | ";
+			std::cout << _Lname << " | ";
+			std::cout << _Nickname << " | ";
+			std::cout << _Darksecret << " | ";
+			std::cout << _Phone << std::endl;
+			return 0;
+		}
+		int	contentIsEmpty(){
+			if (_Fname.empty() || _Lname.empty() || _Nickname.empty() || _Darksecret.empty() || _Phone.empty())
+				return 1;
+			return 0;
+		}
+
+	private:
+		std::string _Fname;
+		std::string _Lname;
+		std::string _Nickname;
+		std::string _Darksecret;
+		std::string	_Phone;
+
+		void _setFName(){
 			std::string str;
 			while (true)
 			{
@@ -34,7 +63,7 @@ class User {
 				}
 			}
 		}
-		void setLName(){
+		void _setLName(){
 			std::string str;
 			while (true)
 			{
@@ -49,7 +78,7 @@ class User {
 				}
 			}
 		}
-		void setNickname(){
+		void _setNickname(){
 			std::string str;
 			while (true)
 			{
@@ -64,7 +93,7 @@ class User {
 				}
 			}
 		}
-		void setDarksecret(){
+		void _setDarksecret(){
 			std::string str;
 			while (true)
 			{
@@ -79,7 +108,7 @@ class User {
 				}
 			}
 		}
-		void setPhone(){
+		void _setPhone(){
 			std::string str;
 			while (true)
 			{
@@ -93,29 +122,6 @@ class User {
 					std::cout << "Number is too sort or contains letters" << std::endl;
 				}
 			}
-		}
-		int printUser(){
-			if (!_checkForEmptyContent())
-				return 1;
-			std::cout << _Fname << " | ";
-			std::cout << _Lname << " | ";
-			std::cout << _Nickname << " | ";
-			std::cout << _Darksecret << " | ";
-			std::cout << _Phone << std::endl;
-			return 0;
-		}
-
-	private:
-		std::string _Fname;
-		std::string _Lname;
-		std::string _Nickname;
-		std::string _Darksecret;
-		std::string	_Phone;
-
-		int	_checkForEmptyContent(){
-			if (_Fname.empty() || _Lname.empty() || _Nickname.empty() || _Darksecret.empty() || _Phone.empty())
-				return 0;
-			return 1;
 		}
 }; 
 
