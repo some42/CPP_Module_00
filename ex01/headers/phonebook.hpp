@@ -6,28 +6,30 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 11:17:09 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/16 17:41:24 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:44:26 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-#include <iostream>
-#include <sstream>
-#include <regex>
-#include <cstdlib>
+# include <iostream>
+# include <sstream>
+# include <regex>
+# include <cstdlib>
+
+# define MAX_USERS 9
 
 class User { 
 	public: 
-		void create(){
+		void create() {
 			_setFName();
 			_setLName();
 			_setNickname();
 			_setDarksecret();
 			_setPhone();
 		}
-		int printUser(){
+		int printUser() {
 			std::cout << _Fname << " | ";
 			std::cout << _Lname << " | ";
 			std::cout << _Nickname << " | ";
@@ -35,7 +37,7 @@ class User {
 			std::cout << _Phone << std::endl;
 			return 0;
 		}
-		int	contentIsEmpty(){
+		int	contentIsEmpty() {
 			if (_Fname.empty() || _Lname.empty() || _Nickname.empty() || _Darksecret.empty() || _Phone.empty())
 				return 1;
 			return 0;
@@ -48,67 +50,63 @@ class User {
 		std::string _Darksecret;
 		std::string	_Phone;
 
-		void _setFName(){
+		void _setFName() {
 			std::string str;
 			while (true)
 			{
 				std::cout << "First Name: ";
 				std::cin >> str;
-				if (std::regex_match(str, std::regex("^[A-Za-z]+$"))){
+				if (std::regex_match(str, std::regex("^[A-Za-z]+$"))) {
 					_Fname = str;
 					break;
 				}
-				else {
+				else
 					std::cout << "Only letters!" << std::endl;
-				}
 			}
 		}
-		void _setLName(){
+		void _setLName() {
 			std::string str;
 			while (true)
 			{
 				std::cout << "Last Name: ";
 				std::cin >> str;
-				if (std::regex_match(str, std::regex("^[A-Za-z]+$"))){
+				if (std::regex_match(str, std::regex("^[A-Za-z]+$"))) {
 					_Lname = str;
 					break;
 				}
-				else {
+				else
 					std::cout << "Only letters!" << std::endl;
-				}
 			}
 		}
-		void _setNickname(){
+		void _setNickname() {
 			std::string str;
 			while (true)
 			{
 				std::cout << "Nickname: ";
 				std::cin >> str;
-				if (std::regex_match(str, std::regex("^[A-Za-z]+$"))){
+				if (std::regex_match(str, std::regex("^[A-Za-z]+$"))) {
 					_Nickname = str;
 					break;
 				}
-				else {
+				else
 					std::cout << "Only letters!" << std::endl;
-				}
 			}
 		}
-		void _setDarksecret(){
+		void _setDarksecret() {
 			std::string str;
 			while (true)
 			{
 				std::cout << "Dark secret: ";
 				std::cin >> str;
-				if (std::regex_match(str, std::regex("^[A-Za-z]+$"))){
+				if (std::regex_match(str, std::regex("^[A-Za-z]+$"))) {
 					_Darksecret = str;
 					break;
 				}
-				else {
+				else
 					std::cout << "Only letters!" << std::endl;
-				}
 			}
 		}
-		void _setPhone(){
+		void _setPhone() {
 			std::string str;
 			while (true)
 			{
@@ -118,9 +116,8 @@ class User {
 					_Phone = str;
 					break;
 				}
-				else {
+				else
 					std::cout << "Number is too sort or contains letters" << std::endl;
-				}
 			}
 		}
 }; 
