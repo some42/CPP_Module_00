@@ -6,7 +6,7 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 11:50:20 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/16 16:54:14 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:40:40 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main(void)
 {
-	User phonebook[9];
+	User 		phonebook[9];
 	std::string command = " ";
+	uint64_t 	i;
 
 	while (command != "EXIT")
 	{
@@ -24,14 +25,37 @@ int	main(void)
 		if (command == "EXIT")
 			break;
 		if (command == "ADD"){
-			phonebook[0].setFName();
-			phonebook[0].setLName();
-			phonebook[0].setNickname();
-			phonebook[0].setDarksecret();
-			phonebook[0].setPhone();
-			phonebook[0].printUser();
+			i = 0;
+			while(!phonebook[i].contentIsEmpty())
+			{
+				if (i >= 9)
+				{
+					i = 0;
+					break;
+				}
+				i++;
+			}
+			phonebook[i].create();
+			phonebook[i].printUser();
 		}
-		if (command == "SEARCH"){}
+		if (command == "SEARCH"){
+			while (true) {
+				std::cout << "Index: ";
+				std::cin >> command;
+				i = std::stoi(command);
+				if (std::regex_match(command, std::regex("^[0-9]+$")) && command.length() == 1 && i < 9 && i > 0) {
+					if (phonebook[i - 1].contentIsEmpty())
+						std::cout << "That index does not exist!" << std::endl;
+					else
+					{
+						phonebook[i - 1].printUser();
+						break;
+					}
+				}
+				else
+					std::cout << "Index not valid!" << std::endl;
+			}
+		}
 	}
 	exit (0);
 }
