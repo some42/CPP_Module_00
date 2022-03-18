@@ -6,7 +6,7 @@
 #    By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 11:45:07 by agaliste          #+#    #+#              #
-#    Updated: 2022/03/16 16:03:13 by agaliste         ###   ########.fr        #
+#    Updated: 2022/03/18 23:16:24 by agaliste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ HEADER = headers
 CC = clang++
 
 # COMPILATION FLAGS
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SANITIZE_FLAGS = $(FLAGS) -fsanitize=address
 DEBUG_FLAGS = $(SANITIZE_FLAGS) -g3
 
