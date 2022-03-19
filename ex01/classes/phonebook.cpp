@@ -6,7 +6,7 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:27:19 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/19 02:25:07 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/19 02:38:05 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 phonebook::phonebook() {
 	_numberOfContacts = 0;
-	_lastAddedContact = 0;
+	_oldestConntact = 0;
 }
 
 phonebook::~phonebook(){}
@@ -60,16 +60,26 @@ void	phonebook::add()
 	std::cout << "|                 ADD USER                  |" << std::endl;
 	std::cout << "*-------------------------------------------*" << std::endl;
 	
-	while(!_contacts[index].contentIsEmpty())
-	{
-		if (index >= MAX_USERS) {
-			index = 0;
-			break;
+	if (!(_numberOfContacts > 7)) {
+		while(!_contacts[index].contentIsEmpty())
+		{
+			if (index >= MAX_USERS) {
+				index = 0;
+				break;
+			}
+			index++;
+		}	
+	}
+	else {
+		if (_oldestConntact == MAX_USERS - 1)
+			_oldestConntact = 0;
+		else {
+			index = _oldestConntact;
+			_oldestConntact += 1;
 		}
-		index++;
 	}
 	_contacts[index].create();
-	if (!(_numberOfContacts > 7))
+	if (!(_numberOfContacts == MAX_USERS))
 		_numberOfContacts += 1;
 }
 
