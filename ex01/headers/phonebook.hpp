@@ -7,6 +7,8 @@ class phonebook {
 	private:
 		contact	_contacts[MAX_USERS];
 		int		_numberOfContacts;
+		int		_lastAddedContact;
+
 		void	_printTable();
 	public:
 		phonebook();

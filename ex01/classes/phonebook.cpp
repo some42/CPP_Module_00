@@ -6,35 +6,43 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:27:19 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/19 02:08:40 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/19 02:25:07 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.hpp"
 
-phonebook::phonebook(){ _numberOfContacts = 0;}
+phonebook::phonebook() {
+	_numberOfContacts = 0;
+	_lastAddedContact = 0;
+}
 
 phonebook::~phonebook(){}
 
 void	phonebook::search()	{
-	std::string index;
-	uint64_t 	indexnum;
+	std::string input;
+	uint64_t 	index;
 	
 	system("clear");
 	_printTable();
 	while (true) {
 		std::cout << "Index: ";
-		std::cin >> index;
-		if (!std::regex_match(index, std::regex("^[0-9]+$"))) {
+		std::cin >> input;
+		if (!std::regex_match(input, std::regex("^[0-9]+$"))) {
 			std::cout << "Index can only be a number!" << std::endl;
 			continue;
 		}
-		indexnum = std::stoi(index);
-		if (index.length() == 1 && indexnum < MAX_USERS) {
-			if (_contacts[indexnum].contentIsEmpty())
+		index = std::stoi(input);
+		if (input.length() == 1 && index < MAX_USERS) {
+			if (_contacts[index].contentIsEmpty())
 				std::cout << "That index does not exist!" << std::endl;
 			else {
-				_contacts[indexnum].printContact();
+				system("clear");
+				std::cout << std::endl << "*-------------------------------------------*" << std::endl;
+				std::cout << "|                 CONTACT " << "[" << index <<"]               |" << std::endl;
+				std::cout << "*-------------------------------------------*" << std::endl;
+				_contacts[index].printContact();
+				std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 				break;
 			}
 		}
@@ -45,22 +53,22 @@ void	phonebook::search()	{
 
 void	phonebook::add()
 {
-	uint64_t i = 0;
+	uint64_t index = 0;
 
 	system("clear");
 	std::cout << std::endl << "*-------------------------------------------*" << std::endl;
 	std::cout << "|                 ADD USER                  |" << std::endl;
 	std::cout << "*-------------------------------------------*" << std::endl;
-	while(!_contacts[i].contentIsEmpty())
+	
+	while(!_contacts[index].contentIsEmpty())
 	{
-		if (i >= MAX_USERS)
-		{
-			i = 0;
+		if (index >= MAX_USERS) {
+			index = 0;
 			break;
 		}
-		i++;
+		index++;
 	}
-	_contacts[i].create();
+	_contacts[index].create();
 	if (!(_numberOfContacts > 7))
 		_numberOfContacts += 1;
 }
@@ -71,6 +79,7 @@ void	phonebook::_printTable() {
 	std::cout << std::endl << "*-------------------------------------------*" << std::endl;
 	std::cout << "|     INDEX| FIRSTNAME|  LASTNAME|  NICKNAME|" << std::endl;
 	std::cout << "*-------------------------------------------*" << std::endl;
+	
 	for(int i = 0; (i < _numberOfContacts) && (i < 8); i++) {
 		std::cout << "|"; std::cout << std::setw(10) << std::right << i;
 
