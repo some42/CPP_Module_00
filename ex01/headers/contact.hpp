@@ -6,7 +6,7 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 11:17:09 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/19 02:06:29 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/19 02:40:54 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ class contact {
 		std::string getNickname();
 		std::string getDarksecret();
 		std::string getPhone();
-		void create();
-		void printContact();
-		int contentIsEmpty();
+		void		create();
+		void 		printContact();
+		int			contentIsEmpty();
 };
 
 #endif

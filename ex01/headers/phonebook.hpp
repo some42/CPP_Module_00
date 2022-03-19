@@ -10,6 +10,7 @@ class phonebook {
 		int		_oldestConntact;
 
 		void	_printTable();
+
 	public:
 		phonebook();
 		~phonebook();

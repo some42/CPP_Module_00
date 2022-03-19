@@ -6,7 +6,7 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:31:06 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/19 02:00:56 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/19 02:42:24 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ std::string	contact::getNickname() {return _Nickname;}
 std::string	contact::getDarksecret() {return _Darksecret;}
 std::string	contact::getPhone() {return _Phone;}
 
-void contact::create() {
+void contact::create()
+{
 	_setFName();
 	_setLName();
 	_setNickname();
@@ -30,7 +31,8 @@ void contact::create() {
 	_setPhone();
 }
 
-void contact::printContact() {
+void contact::printContact()
+{
 	std::cout << std::endl << "First Name: " << _Fname << std::endl;
 	std::cout << "last Name: " << _Lname << std::endl;
 	std::cout << "Nickname: " << _Nickname << std::endl;
@@ -38,13 +40,15 @@ void contact::printContact() {
 	std::cout << "Phone: " << _Phone << std::endl << std::endl;
 }
 
-int contact::contentIsEmpty() {
+int contact::contentIsEmpty()
+{
 	if (_Fname.empty() || _Lname.empty() || _Nickname.empty() || _Darksecret.empty() || _Phone.empty())
 		return 1;
 	return 0;
 }
 
-void contact::_setFName() {
+void contact::_setFName()
+{
 	std::string str;
 	while (true)
 	{
@@ -60,7 +64,8 @@ void contact::_setFName() {
 	}
 }
 
-void contact::_setLName() {
+void contact::_setLName()
+{
 	std::string str;
 	while (true)
 	{
@@ -76,7 +81,8 @@ void contact::_setLName() {
 	}
 }
 
-void contact::_setNickname() {
+void contact::_setNickname()
+{
 	std::string str;
 	while (true)
 	{
@@ -92,7 +98,8 @@ void contact::_setNickname() {
 	}
 }
 
-void contact::_setDarksecret() {
+void contact::_setDarksecret()
+{
 	std::string str;
 	while (true)
 	{
@@ -108,7 +115,8 @@ void contact::_setDarksecret() {
 	}
 }
 
-void contact::_setPhone() {
+void contact::_setPhone()
+{
 	std::string str;
 	while (true)
 	{
