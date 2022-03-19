@@ -6,7 +6,7 @@
 #    By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 11:45:07 by agaliste          #+#    #+#              #
-#    Updated: 2022/03/18 23:16:24 by agaliste         ###   ########.fr        #
+#    Updated: 2022/03/19 00:55:43 by agaliste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,15 @@
 NAME = phonebook
 
 # SOURCE FILES (.c)
-SRCS = phonebook.cpp
+SRCS = 	main.cpp																\
+		classes/contact.cpp														\
+		classes/phonebook.cpp
 
 # HEADER FILES (.h)
 HEADER = headers
 
 # COMPILER
-CC = clang++
+CC = c++
 
 # COMPILATION FLAGS
 FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
