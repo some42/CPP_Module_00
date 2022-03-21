@@ -6,7 +6,7 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:27:19 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/19 02:43:23 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/21 21:36:17 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	phonebook::search()
 	std::string input;
 	uint64_t 	index;
 	
+	if (_numberOfContacts == 0)
+	{
+		std::cout << std::endl << "Add a contact first!" << std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+		return ;
+	}
 	system("clear");
 	_printTable();
 	while (true)
@@ -134,7 +140,7 @@ void	phonebook::_printTable()
 		{
 			std::cout << "|"; std::cout << std::setw(10) <<  std::right << _contacts[i].getNickname();
 		}
-		std::cout << "|"; std::setw(1); std::cout << "\n";
+		std::cout << "|"; std::setw(1); std::cout << std::endl;
 	}
-	std::cout << "*-------------------------------------------*\n" << std::endl;
+	std::cout << "*-------------------------------------------*" << std::endl << std::endl;
 }
