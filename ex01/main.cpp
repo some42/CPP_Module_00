@@ -6,7 +6,7 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 11:50:20 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/19 02:09:33 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/21 21:24:36 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 	phonebook phonebook;
 	std::string command;
 
-	while (command != "EXIT")
+	do
 	{
 		system("clear");
 		printStartHeader();
@@ -37,6 +37,6 @@ int	main(void)
 			phonebook.add();
 		if (command == "SEARCH")
 			phonebook.search();
-	}
+	} while (command != "EXIT" && command != "\0");
 	exit (0);
 }
