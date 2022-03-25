@@ -5,55 +5,65 @@
 #                                                     +:+ +:+         +:+      #
 #    By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/16 16:57:41 by agaliste          #+#    #+#              #
-#    Updated: 2022/03/19 00:09:13 by agaliste         ###   ########.fr        #
+#    Created: 2022/03/09 17:58:20 by agaliste          #+#    #+#              #
+#    Updated: 2022/03/25 20:35:19 by agaliste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# BINARY NAME
+# Name of the executable
 NAME = megaphone
 
-# SOURCE FILES (.c)
-SRCS = megaphone.cpp
+# CPP Make Variables
+CXX := c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -O2
+INCLUDES = -I include/
 
-# COMPILER
-CC = clang++
+# Directories
+BIN_DIR = ./bin
+SRC_DIR = .
+SRC_EXT = cpp
+###▼▼▼<src-updater-do-not-edit-or-remove>▼▼▼
+# **************************************************************************** #
+# **   Generated with https://github.com/lorenuars19/makefile-src-updater   ** #
+# **************************************************************************** #
 
-# COMPILATION FLAGS
-FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-SANITIZE_FLAGS = $(FLAGS) -fsanitize=address
-DEBUG_FLAGS = $(SANITIZE_FLAGS) -g3
+SRCS = \
+	./src/megaphone.cpp \
 
-# COMPILED OBJECTS
-OBJS = $(SRCS:.cpp=.o)
+HEADERS = \
 
-# MAKEFILE RULES
-.PHONY: all sanitize resanitize debug rebug clean fclean re
+###▲▲▲<src-updater-do-not-edit-or-remove>▲▲▲
 
-all: $(NAME)
+OBJS := $(SRCS:%.cpp=$(BIN_DIR)/%.o)
 
-%.o: %.cpp
-	$(CC) $(FLAGS) -c $< -o $@
+all : $(NAME)
 
-$(NAME): $(OBJS) 
-	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
+$(NAME) : $(OBJS)
+	@printf "\e[33;1m&&& $(SRCS) -- [$(CXXFLAGS)] \n>>> $(NAME)\e[0m\n"
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-sanitize: $(NAME)
-	$(CC) $(SANITIZE_FLAGS) $(SRCS) -o $(NAME)
+$(BIN_DIR):
+	@mkdir -p $(BIN_DIR)
 
-resanitize: fclean sanitize
-
-debug: $(NAME)
-	$(CC) $(DEBUG_FLAGS) $(SRCS) -o $(NAME)
-
-rebug: fclean debug
+$(BIN_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) | $(BIN_DIR)
+	@printf "\e[32;1m+++ $@ -- [$(CXXFLAGS)] \e[0m\n"
+	@mkdir -p $(@D)
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJS)
-	@echo "cleaning .o files"
+	@printf "\e[31;1m--- $(OBJS)\e[0m\n"
+	@rm -rf $(BIN_DIR)
 
 fclean: clean
+	@printf "\e[31;1m--- $(NAME)\e[0m\n"
 	@rm -rf $(NAME)
-	@echo "Removed binary"
 
 re: fclean all
+
+debug: CXXFLAGS += -D DEBUG=1 -g3
+debug: re all
+
+debug_san: CXXFLAGS += -D DEBUG=1 -g3 -fsanitize=address
+debug_san: re all
+
+.PHONY: all dir re clean fclean
