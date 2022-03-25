@@ -6,7 +6,7 @@
 #    By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/09 17:58:20 by agaliste          #+#    #+#              #
-#    Updated: 2022/03/25 20:21:06 by agaliste         ###   ########.fr        #
+#    Updated: 2022/03/25 20:24:21 by agaliste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ SRC_EXT = cpp
 # **************************************************************************** #
 
 SRCS = \
-	./src/contact.cpp \
-	./src/phonebook.cpp \
+	./src/classes/contact.cpp \
+	./src/classes/phonebook.cpp \
 	./src/main.cpp \
 
 HEADERS = \
