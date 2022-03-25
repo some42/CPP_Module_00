@@ -35,6 +35,8 @@
 *.i*86
 *.x86_64
 *.hex
+phonebook
+megaphone
 
 # Debug files
 *.dSYM/
@@ -50,8 +52,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-*.DS_Store
 .nfs*
+
+# Visual Studio Code
 .vscode
+
+# MACOS
+*.DS_Store
+
+# MAKEFILE UPDATER JUNK
 *.wrong
-phonebook
