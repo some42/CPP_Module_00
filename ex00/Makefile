@@ -6,7 +6,7 @@
 #    By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/09 17:58:20 by agaliste          #+#    #+#              #
-#    Updated: 2022/03/26 21:54:59 by agaliste         ###   ########.fr        #
+#    Updated: 2022/03/26 21:55:53 by agaliste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = megaphone
 # CPP Make Variables
 CXX := c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -O2 -pedantic
-INCLUDES = -I include/
+INCLUDES = -I includes/
 
 # Directories
 BIN_DIR = ./bin
