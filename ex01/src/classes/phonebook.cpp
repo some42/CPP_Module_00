@@ -6,20 +6,32 @@
 /*   By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 00:27:19 by agaliste          #+#    #+#             */
-/*   Updated: 2022/03/21 21:36:17 by agaliste         ###   ########.fr       */
+/*   Updated: 2022/03/26 22:25:46 by agaliste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.hpp"
 
+/**
+ * @brief Construct a new phonebook::phonebook object
+ * 
+ */
 phonebook::phonebook()
 {
 	_numberOfContacts = 0;
 	_oldestConntact = 0;
 }
 
+/**
+ * @brief Destroy the phonebook::phonebook object
+ * 
+ */
 phonebook::~phonebook(){}
 
+/**
+ * @brief Displays all contact::contact objects stored in the phonebook::phonebook object and promts to print information of a elegible contact::contact object
+ * 
+*/
 void	phonebook::search()
 {
 	std::string input;
@@ -63,6 +75,12 @@ void	phonebook::search()
 	}
 }
 
+
+/**
+ * @brief Promts to initialize a contact::contact object to phonebook::phonebook object
+ * 
+ *
+ */
 void	phonebook::add()
 {
 	uint64_t index = 0;
@@ -99,6 +117,10 @@ void	phonebook::add()
 		_numberOfContacts += 1;
 }
 
+/**
+ * @brief Prints table with all the contact::contact objects
+ * 
+ */
 void	phonebook::_printTable()
 {
 	std::string	string;
