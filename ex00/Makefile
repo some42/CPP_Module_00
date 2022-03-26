@@ -6,7 +6,7 @@
 #    By: agaliste <agaliste@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/09 17:58:20 by agaliste          #+#    #+#              #
-#    Updated: 2022/03/25 20:39:16 by agaliste         ###   ########.fr        #
+#    Updated: 2022/03/26 21:54:59 by agaliste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ $(BIN_DIR):
 	@mkdir -p $(BIN_DIR)
 
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) | $(BIN_DIR)
-	@printf "\e[32;1m+++ $@ -- [$(CXXFLAGS)] \e[0m\n"
+	@printf "\e[32;1m+++ $< -- [$(CXXFLAGS)] \e[0m\n"
 	@mkdir -p $(@D)
 	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
